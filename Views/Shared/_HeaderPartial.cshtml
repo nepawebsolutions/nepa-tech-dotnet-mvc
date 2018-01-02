@@ -5,10 +5,27 @@
 
 <!-- Header -->
 <header id="header">
-    <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">Welcome to NEPA Tech</a>
-    <ul class="icons">
-        <li><a href="https://www.meetup.com/NEPA-js/" target="_blank" rel="noopener noreferrer" class="icon fa-meetup"><span class="label">Meetup</span></a></li>
-        <li><a href="https://www.facebook.com/NEPATechGroup/" target="_blank" rel="noopener noreferrer" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-        <li><a href="https://www.reddit.com/r/NEPATech/" class="icon fa-reddit-alien"><span class="label">Reddit</span></a></li>
-    </ul>
+    <div class="row">
+        <div class="col-12">
+            @*<div class="header-logo-container">
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    <div >
+                        <img class="logo" src="~/images/pic03.jpg" alt="" />
+                    </div>
+                </a>
+            </div>*@
+            <div class="header-text-container">
+                <div class="header-text">
+                    <span>NEPA Web Solutions</span>
+                </div>
+            </div>
+            <div class="icons-container">
+                <ul class="icons">
+                    <li><a href="https://www.meetup.com/NEPATech/" target="_blank" rel="noopener noreferrer" class="icon fa-meetup"><span class="label">Meetup</span></a></li>
+                    <li><a href="https://www.facebook.com/NEPATechGroup/" target="_blank" rel="noopener noreferrer" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="https://www.reddit.com/r/NEPATech/" class="icon fa-reddit-alien"><span class="label">Reddit</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </header>
