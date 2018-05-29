@@ -12,9 +12,14 @@ namespace NEPATechDotnetCoreMVC.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["Title"] = "Welcome ";
             return View();
         }
 
+
+
+
+        //Redirects, the actions that redirect the navigation links properly
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
@@ -22,23 +27,23 @@ namespace NEPATechDotnetCoreMVC.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult ContactUs()
         {
             ViewData["Message"] = "Your contact page.";
 
+            return RedirectToAction("Index","ContactUs");
+        }
+
+        public IActionResult Members()
+        {
+            ViewData["Message"] = "Your Members Page.";
+
             return View();
         }
 
-        public IActionResult Elements()
+        public IActionResult Events()
         {
-            ViewData["Message"] = "Your Elements Page.";
-
-            return View();
-        }
-
-        public IActionResult Generic()
-        {
-            ViewData["Message"] = "Your Elements Page.";
+            ViewData["Message"] = "Your Events Page.";
 
             return View();
         }

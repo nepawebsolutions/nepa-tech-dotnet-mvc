@@ -1,11 +1,11 @@
-﻿@page
+﻿
 
 @{
 }
 
 <!-- Header -->
 <header id="header">
-    <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">Welcome to NEPA Tech</a>
+    <a class="logo" id="formatTitleHeader" asp-area="" asp-controller="Home" asp-action="Index">@ViewData["Title"]</a>
     <ul class="icons">
         <li><a href="https://www.meetup.com/NEPA-js/" target="_blank" rel="noopener noreferrer" class="icon fa-meetup"><span class="label">Meetup</span></a></li>
         <li><a href="https://www.facebook.com/NEPATechGroup/" target="_blank" rel="noopener noreferrer" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
