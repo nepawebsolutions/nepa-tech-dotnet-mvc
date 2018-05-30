@@ -2,7 +2,9 @@
 @{
     ViewData["Title"] = "Members";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
+@model NEPATechDotnetCoreMVC.ViewModel.MembersViewModel
 
 <div class="inner">
     @Html.Partial("_HeaderPartial", null)
@@ -11,223 +13,75 @@
             <div class="row">
                 <div class="col">
                     <div id="memberList">
+
                         @*The following snippit wiil be the base layout for each member profile.*@
-                        <div class="memberProfile">
-                            <div class="row">
-                                <div class="col">
-                                    <a href=""><img src="~/images/pic01.jpg" width="75" height="75" /></a>
-                                </div>
-                                <div class="col-9 align-content-around">
-                                    <h6><a href="">Username</a></h6>
-                                    <p class="memberDescription">A decidedly descript description of describing a disciple of dionysus for doccumentation determination</p>
-                                </div>
-                                <div class="col">
-                                    Date Joined
+
+                        @foreach (var member in Model.Members)
+                        {
+                            <div class="memberProfile">
+                                <div class="row">
+                                    <div class="col">
+                                        <a href=""><img src="~/images/pic01.jpg" width="75" height="75" /></a>
+                                    </div>
+                                    <div class="col-9 align-content-around">
+                                        <h6><a href="">@member</a></h6>
+                                        <p class="memberDescription">@Model.description</p>
+                                    </div>
+                                    <div class="col">
+                                        @Model.dateJoined
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+                        }
 
 
-                        @* Dummy Profile 1 *@
-                        <div class="memberProfile">
-                            <div class="row">
-                                <div class="col">
-                                    <a href=""><img src="~/images/pic01.jpg" width="75" height="75" /></a>
-                                </div>
-                                <div class="col-9 align-content-around">
-                                    <h6><a href="">Username</a></h6>
-                                    <p class="memberDescription">A decidedly descript description of describing a disciple of dionysus for doccumentation determination</p>
-                                </div>
-                                <div class="col">
-                                    Date Joined
-                                </div>
-                            </div>
-                        </div>
-
-                        @* Dummy Profile 1 *@
-                        <div class="memberProfile">
-                            <div class="row">
-                                <div class="col">
-                                    <a href=""><img src="~/images/pic01.jpg" width="75" height="75" /></a>
-                                </div>
-                                <div class="col-9 align-content-around">
-                                    <h6><a href="">Username</a></h6>
-                                    <p class="memberDescription">A decidedly descript description of describing a disciple of dionysus for doccumentation determination</p>
-                                </div>
-                                <div class="col">
-                                    Date Joined
-                                </div>
-                            </div>
-                        </div>
-
-
-                        @* Dummy Profile 1 *@
-                        <div class="memberProfile">
-                            <div class="row">
-                                <div class="col">
-                                    <a href=""><img src="~/images/pic01.jpg" width="75" height="75" /></a>
-                                </div>
-                                <div class="col-9 align-content-around">
-                                    <h6><a href="">Username</a></h6>
-                                    <p class="memberDescription">A decidedly descript description of describing a disciple of dionysus for doccumentation determination</p>
-                                </div>
-                                <div class="col">
-                                    Date Joined
-                                </div>
-                            </div>
-                        </div>
-
-
-                        @* Dummy Profile 1 *@
-                        <div class="memberProfile">
-                            <div class="row">
-                                <div class="col">
-                                    <a href=""><img src="~/images/pic01.jpg" width="75" height="75" /></a>
-                                </div>
-                                <div class="col-9 align-content-around">
-                                    <h6><a href="">Username</a></h6>
-                                    <p class="memberDescription">A decidedly descript description of describing a disciple of dionysus for doccumentation determination</p>
-                                </div>
-                                <div class="col">
-                                    Date Joined
-                                </div>
-                            </div>
-                        </div>
-
-
-                        @* Dummy Profile 1 *@
-                        <div class="memberProfile">
-                            <div class="row">
-                                <div class="col">
-                                    <a href=""><img src="~/images/pic01.jpg" width="75" height="75" /></a>
-                                </div>
-                                <div class="col-9 align-content-around">
-                                    <h6><a href="">Username</a></h6>
-                                    <p class="memberDescription">A decidedly descript description of describing a disciple of dionysus for doccumentation determination</p>
-                                </div>
-                                <div class="col">
-                                    Date Joined
-                                </div>
-                            </div>
-                        </div>
-
-
-                        @* Dummy Profile 1 *@
-                        <div class="memberProfile">
-                            <div class="row">
-                                <div class="col">
-                                    <a href=""><img src="~/images/pic01.jpg" width="75" height="75" /></a>
-                                </div>
-                                <div class="col-9 align-content-around">
-                                    <h6><a href="">Username</a></h6>
-                                    <p class="memberDescription">A decidedly descript description of describing a disciple of dionysus for doccumentation determination</p>
-                                </div>
-                                <div class="col">
-                                    Date Joined
-                                </div>
-                            </div>
-                        </div>
-
-
-                        @* Dummy Profile 1 *@
-                        <div class="memberProfile">
-                            <div class="row">
-                                <div class="col">
-                                    <a href=""><img src="~/images/pic01.jpg" width="75" height="75" /></a>
-                                </div>
-                                <div class="col-9 align-content-around">
-                                    <h6><a href="">Username</a></h6>
-                                    <p class="memberDescription">A decidedly descript description of describing a disciple of dionysus for doccumentation determination</p>
-                                </div>
-                                <div class="col">
-                                    Date Joined
-                                </div>
-                            </div>
-                        </div>
-
-
-                        @* Dummy Profile 1 *@
-                        <div class="memberProfile">
-                            <div class="row">
-                                <div class="col">
-                                    <a href=""><img src="~/images/pic01.jpg" width="75" height="75" /></a>
-                                </div>
-                                <div class="col-9 align-content-around">
-                                    <h6><a href="">Username</a></h6>
-                                    <p class="memberDescription">A decidedly descript description of describing a disciple of dionysus for doccumentation determination</p>
-                                </div>
-                                <div class="col">
-                                    Date Joined
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        @* Dummy Profile 1 *@
-                        <div class="memberProfile">
-                            <div class="row">
-                                <div class="col">
-                                    <a href=""><img src="~/images/pic01.jpg" width="75" height="75" /></a>
-                                </div>
-                                <div class="col-9 align-content-around">
-                                    <h6><a href="">Username</a></h6>
-                                    <p class="memberDescription">A decidedly descript description of describing a disciple of dionysus for doccumentation determination</p>
-                                </div>
-                                <div class="col">
-                                    Date Joined
-                                </div>
-                            </div>
-                        </div>
-
-
-                        @* Dummy Profile 1 *@
-                        <div class="memberProfile">
-                            <div class="row">
-                                <div class="col">
-                                    <a href=""><img src="~/images/pic01.jpg" width="75" height="75" /></a>
-                                </div>
-                                <div class="col-9 align-content-around">
-                                    <h6><a href="">Username</a></h6>
-                                    <p class="memberDescription">A decidedly descript description of describing a disciple of dionysus for doccumentation determination</p>
-                                </div>
-                                <div class="col">
-                                    Date Joined
-                                </div>
-                            </div>
-                        </div>
+                        @* END OF TEMPLATE *@
 
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <ul class="pagination" aria-label="Members pages">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li">
-                                <li class="page-item"><a class="page-link" href="#1">1</a></li">
-                                <li class="page-item"><a class="page-link" href="#2">2</a></li">
-                                <li class="page-item"><a class="page-link" href="#3">3</a></li">
-                                <li class="page-item"><a class="page-link" href="#4">4</a></li">
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li">
-                            </ul>
-                        </div>
-                        @*
-                            
-                        The following is dummy code for whenever someone wants to add in the members per page deal, currently it's 10 ~As of 5/30/2018   
-                            
 
-                        <div class="col">
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary active">
-                                    <input type="radio" name="options" id="option1" autocomplete="off" checked> Active
-                                </label>
-                                <label class="btn btn-secondary">
-                                    <input type="radio" name="options" id="option2" autocomplete="off"> Radio
-                                </label>
-                                <label class="btn btn-secondary">
-                                    <input type="radio" name="options" id="option3" autocomplete="off"> Radio
-                                </label>
+                    @* Pager *@
+
+                    @if (Model.Pager.EndPage > 1)
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <ul class="pagination" aria-label="Members pages">
+                                    @if (Model.Pager.CurrentPage > 1)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" asp-area="" asp-controller="Members" asp-action="Index">First</a>
+                                            </li">
+
+                                        <li class="page-item">
+                                            <a class="page-link" asp-controller="Members" asp-route-page="@(Model.Pager.CurrentPage-1)">Previous</a>
+                                            </li">
+                                        }
+                                    @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+                                    {
+                                    <li class="page-item @(page == Model.Pager.CurrentPage ? "active" : "")">
+                                        <a class="page-link" asp-controller="Members" asp-route-page="@(page)">@(page)</a>
+                                        </li">
+
+                                    }
+
+                                    @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+                                    {
+
+                                        <li class="page-item">
+                                            <a class="page-link" asp-controller="Members" asp-route-page="@(Model.Pager.CurrentPage+1)">Next</a>
+                                            </li">
+                                        <li class="page-item">
+                                            <a class="page-link" asp-controller="Members" asp-route-page="@(Model.Pager.TotalPages)">Last</a>
+                                            </li">
+
+                                    }
+
+                                </ul>
                             </div>
-                        </div>*@
-                    </div>
+                        </div>
+                    }
+
                 </div>
             </div>
         </div>
