@@ -46,12 +46,15 @@
             </div>
         </div>
         @* Added the style inline to easily override the styling, doesn't need any borders. *@
-        <div id="eventsContainer" class="center-block">
-            <div class="container" style="border:none;">
-                <div class="row">
-                    <h1>Check out our events!</h1>
-                    <p class="description">All throughout NEPA we provide those classes that do things so that people can learn all about tech and stuff. Sometimes it's interesting, but sometimes it's like pulling teeth without novacaine... Oh well</p>
-                    @Html.ActionLink("Upcoming events", "eventsRedirect", "ContactUs",null, new {@class="button special", @style="font-size:22px", @target="_blank"})
+        
+        <div class="container" style="border:none;">
+            <div class="row">
+                <div class="col">
+                    <div id="eventsContainer" class="center-block">
+                        <h1>Check out our events!</h1>
+                        <p class="text-muted">All throughout NEPA we provide those classes that do things so that people can learn all about tech and stuff. Sometimes it's interesting, but sometimes it's like pulling teeth without novacaine... Oh well</p>
+                        @Html.ActionLink("Upcoming events", "eventsRedirect", "ContactUs", null, new { @class = "button special", @target = "_blank" })
+                    </div>
                 </div>
             </div>
         </div>

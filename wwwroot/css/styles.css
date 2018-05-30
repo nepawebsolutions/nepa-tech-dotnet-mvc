@@ -7504,6 +7504,9 @@ a.text-dark:focus, a.text-dark:hover {
   font-weight: bold;
   font-size: 18px; }
 
+.text-icon-red {
+  color: #f56a6a !important; }
+
 .formwrapper {
   margin-top: 50px;
   text-align: left; }
@@ -7523,20 +7526,9 @@ a.text-dark:focus, a.text-dark:hover {
   padding: 0;
   padding-left: 10px;
   padding-top: 40px;
-  color: #e1e1e1; }
+  color: #d1d1d1; }
 
 /*Positioning the contact us page, adding in a border to fill the page a bit*/
-.contactHeaderWrapper {
-  margin-left: 100px;
-  margin-top: 0;
-  padding-top: 0; }
-
-.contactHeaderWrapper #header {
-  padding-top: 22px; }
-
-.contactHeaderWrapper #header #formatTitleHeader {
-  font-size: 28px; }
-
 .contactHeaderWrapper .container {
   border-bottom: 5px #e1e1e1 solid;
   padding-bottom: 40px; }
@@ -7548,27 +7540,44 @@ a.text-dark:focus, a.text-dark:hover {
   padding-left: 100px;
   padding-right: 25px; }
 
-#extraContactInfo .row h5 {
-  font-size: 18px;
-  font-weight: 500; }
-
-#extraContactInfo .row #description {
-  color: #AFAFAF;
-  margin: 0;
-  padding: 0;
-  font-size: 16px; }
+.col #eventsContainer {
+  float: none;
+  margin: 0 auto;
+  text-align: center; }
 
 #eventsContainer {
-  padding-top: 100px; }
+  padding-top: 50px; }
 
-#eventsContainer .container p {
-  text-align: center;
-  padding-bottom: 50px;
-  font-size: 1.4em;
+#eventsContainer p {
+  font-size: 18px; }
+
+#eventsContainer a {
+  font-size: 20px;
+  margin-top: 20px; }
+
+#memberList {
+  padding: 20px;
+  margin-top: 5px; }
+
+.memberProfile .memberDescription {
   color: #808080; }
 
-#eventsContainer .container h1 {
-  padding-bottom: 25px; }
+.memberProfile {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 5px;
+  padding-top: 15px; }
 
-#eventsContainer .container h1, #eventsContainer .container a {
+.col #searchWrapper {
+  background-color: #f56a6a;
+  margin-top: 15px; }
+
+#searchWrapper form {
+  color: #d1d1d1;
+  padding: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+form #searchCustom {
+  width: 75%;
+  height: 25px;
   margin: 0 auto; }

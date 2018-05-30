@@ -20,7 +20,7 @@
     padding: 0;
     padding-left: 10px;
     padding-top: 40px;
-    color: #e1e1e1;
+    color: #d1d1d1;
 }
 
 
@@ -42,31 +42,21 @@
     padding-right:25px;
 }
 
-#extraContactInfo .row h5{
-    font-size:18px;
-    font-weight:500;
-}
-
-#extraContactInfo .row #description {
-    color: #AFAFAF;
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
+.col #eventsContainer {
+    float: none;
+    margin: 0 auto;
+    text-align:center;
 }
 
 #eventsContainer{
-    padding-top:100px;
+    padding-top:50px;
 }
 
-#eventsContainer .container p{
-    text-align:center;
-    padding-bottom:50px;
-    font-size:1.4em;
-    color:#808080;
+#eventsContainer p{
+    font-size:18px;
 }
-#eventsContainer .container h1{
-    padding-bottom:25px;
-}
-#eventsContainer .container h1, #eventsContainer .container a {
-    margin: 0 auto;
+
+#eventsContainer a{
+    font-size:20px;
+    margin-top:20px;
 }

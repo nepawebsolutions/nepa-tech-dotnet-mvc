@@ -1,6 +1,6 @@
 ﻿#memberList{
     padding:20px;
-    margin-top:50px;
+    margin-top:5px;
 }
 .memberProfile .memberDescription{
     color:#808080;
@@ -11,3 +11,23 @@
     padding-bottom:5px;
     padding-top:15px;
 }
+
+.col #searchWrapper {
+    background-color: #f56a6a;
+    margin-top:15px;
+    
+}
+
+#searchWrapper form {
+    color: #d1d1d1;
+    padding: 5px;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+form #searchCustom{
+    width:75%;
+    height:25px;
+    margin:0 auto;
+}
+
