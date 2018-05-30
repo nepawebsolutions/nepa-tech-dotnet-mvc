@@ -4,6 +4,54 @@
 @*<h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>*@
 
-<div class="inner">
+<div class="contactHeaderWrapper">
     @Html.Partial("_HeaderPartial", null)
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="formwrapper">
+                    <h4>Get in Touch</h4>
+                    <p id="description">Please fill out this quick form and we will be in touch</p>
+                    <form method="post">
+                        <input type="text" name="name" value="Name" onfocus="if (this.value=='Name') this.value='';" />
+                        <br />
+                        <input type="text" name="email" value="Your email address" onfocus="if (this.value=='Your email address') this.value='';" />
+                        <br />
+                        <textarea rows="4" cols="50" onfocus="if (this.value=='Type your concerns here...') this.value='';">Type your concerns here...</textarea>
+                        <br />
+                        <input type="submit" name="submit" value="Send" />
+                    </form>
+                </div>
+            </div>
+            <div class="col" id="contactInfo">
+                <div class="float-md">
+                    <article id="extraContactInfo">
+                        <div class="row">
+                            <h5>Connect with us:</h5>
+                            <p id="description">For support contact us because you want to you can reach us at email@email.com</p>
+                        </div>
+                        <div class="row">
+                            <h6>Office Building</h6>
+                            <p id="description">123 Main Street, Suite 123, Maintown, Maine,12345 USA</p>
+                        </div>
+                        <div class="row">
+                            <h6>Office Building</h6>
+                            <p id="description">123 Main Street, Suite 123, Maintown, Maine,12345 USA</p>
+                        </div>
+
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+    @* Added the style inline to easily override the styling, doesn't need any borders. *@
+    <div id="eventsContainer" class="center-block">
+        <div class="container" style="border:none;">
+            <div class="row">
+                <h1>Check out our events!</h1>
+                <p class="description">All throughout NEPA we provide those classes that do things so that people can learn all about tech and stuff. Sometimes it's interesting, but sometimes it's like pulling teeth without novacaine... Oh well</p>
+                @Html.ActionLink("Upcoming events", "eventsRedirect", "ContactUs",null, new {@class="btn btn-primary", @style="font-size:36px"})
+            </div>
+        </div>
+    </div>
 </div>
