@@ -7497,3 +7497,78 @@ a.text-dark:focus, a.text-dark:hover {
 
 .invisible {
   visibility: hidden !important; }
+
+#header #formatTitleHeader {
+  color: #808080;
+  text-align: left;
+  font-weight: bold;
+  font-size: 18px; }
+
+.formwrapper {
+  margin-top: 50px;
+  text-align: left; }
+
+.formwrapper #description {
+  color: #AFAFAF;
+  margin: 0;
+  padding: 0;
+  font-size: 18px; }
+
+.formwrapper h4 {
+  font-size: 26px;
+  margin: 0;
+  padding: 0; }
+
+.formwrapper form {
+  padding: 0;
+  padding-left: 10px;
+  padding-top: 40px;
+  color: #e1e1e1; }
+
+/*Positioning the contact us page, adding in a border to fill the page a bit*/
+.contactHeaderWrapper {
+  margin-left: 100px;
+  margin-top: 0;
+  padding-top: 0; }
+
+.contactHeaderWrapper #header {
+  padding-top: 22px; }
+
+.contactHeaderWrapper #header #formatTitleHeader {
+  font-size: 28px; }
+
+.contactHeaderWrapper .container {
+  border-bottom: 5px #e1e1e1 solid;
+  padding-bottom: 40px; }
+
+/*Setting up the extra contact info on the right*/
+#extraContactInfo .row {
+  padding-top: 10%;
+  padding-bottom: 12.5%;
+  padding-left: 100px;
+  padding-right: 25px; }
+
+#extraContactInfo .row h5 {
+  font-size: 18px;
+  font-weight: 500; }
+
+#extraContactInfo .row #description {
+  color: #AFAFAF;
+  margin: 0;
+  padding: 0;
+  font-size: 16px; }
+
+#eventsContainer {
+  padding-top: 100px; }
+
+#eventsContainer .container p {
+  text-align: center;
+  padding-bottom: 50px;
+  font-size: 1.4em;
+  color: #808080; }
+
+#eventsContainer .container h1 {
+  padding-bottom: 25px; }
+
+#eventsContainer .container h1, #eventsContainer .container a {
+  margin: 0 auto; }
