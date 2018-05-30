@@ -6,15 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace NEPATechDotnetCoreMVC.Controllers
 {
-    public class ContactUsController : Controller
+    public class MembersController : Controller
     {
         public IActionResult Index()
         {
             return View();
-        }
-        public IActionResult eventsRedirect()
-        {
-            return Redirect("https://www.meetup.com/NEPATech/events/past/");
         }
     }
 }

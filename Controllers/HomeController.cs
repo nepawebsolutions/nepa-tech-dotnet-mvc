@@ -15,17 +15,7 @@ namespace NEPATechDotnetCoreMVC.Controllers
             ViewData["Title"] = "Welcome ";
             return View();
         }
-
-
-
-
-        //Redirects, the actions that redirect the navigation links properly
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
+        
 
         public IActionResult ContactUs()
         {
@@ -38,10 +28,16 @@ namespace NEPATechDotnetCoreMVC.Controllers
         {
             ViewData["Message"] = "Your Members Page.";
 
-            return View();
+            return RedirectToAction("Index", "Members");
         }
 
         public IActionResult Events()
+        {
+            ViewData["Message"] = "Your Events Page.";
+
+            return View();
+        }
+        public IActionResult Elements()
         {
             ViewData["Message"] = "Your Events Page.";
 
