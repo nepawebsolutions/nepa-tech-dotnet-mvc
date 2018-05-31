@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NEPATechDotnetCoreMVC.Models.MockUsers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace NEPATechDotnetCoreMVC.Models.Project
         [Required]
         public int ProjectId { get; set; }
         [Required]
-        public int UserId { get; set; }
+        public User UserId { get; set; }
         [Required]
         [MaxLength(32)]
         public string ProjectName { get; set; }

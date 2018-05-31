@@ -40,12 +40,27 @@ namespace NEPATechDotnetCoreMVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MockUsers",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FName = table.Column<string>(maxLength: 32, nullable: false),
+                    LName = table.Column<string>(maxLength: 32, nullable: false),
+                    MemberProfileId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MockUsers", x => x.UserId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Projects",
                 columns: table => new
                 {
                     ProjectId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(nullable: false),
+                    UserId1 = table.Column<int>(nullable: false),
                     ProjectName = table.Column<string>(maxLength: 32, nullable: false),
                     ProjectDesc = table.Column<string>(nullable: false),
                     ProjectLink = table.Column<string>(nullable: false)
@@ -53,6 +68,12 @@ namespace NEPATechDotnetCoreMVC.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Projects", x => x.ProjectId);
+                    table.ForeignKey(
+                        name: "FK_Projects_MockUsers_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "MockUsers",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -61,13 +82,29 @@ namespace NEPATechDotnetCoreMVC.Migrations
                 {
                     SkillId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(nullable: false),
+                    UserId1 = table.Column<int>(nullable: false),
                     SkillName = table.Column<string>(maxLength: 16, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Skills", x => x.SkillId);
+                    table.ForeignKey(
+                        name: "FK_Skills_MockUsers_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "MockUsers",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projects_UserId1",
+                table: "Projects",
+                column: "UserId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Skills_UserId1",
+                table: "Skills",
+                column: "UserId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -83,6 +120,9 @@ namespace NEPATechDotnetCoreMVC.Migrations
 
             migrationBuilder.DropTable(
                 name: "Skills");
+
+            migrationBuilder.DropTable(
+                name: "MockUsers");
         }
     }
 }

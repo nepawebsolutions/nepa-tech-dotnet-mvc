@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NEPATechDotnetCoreMVC.Models.MockUsers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace NEPATechDotnetCoreMVC.Models.Skill
         [Required]
         public int SkillId { get; set; }
         [Required]
-        public int UserId { get; set; }
+        public User UserId { get; set; }
         [Required]
         [MaxLength(16)]
         public string SkillName { get; set; }
