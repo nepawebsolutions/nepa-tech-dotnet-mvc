@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NEPATechDotnetCoreMVC.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace NEPATechDotnetCoreMVC
 {
@@ -22,6 +24,8 @@ namespace NEPATechDotnetCoreMVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDbContext<NEPATechDbContext>(options =>
+               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));//Server=nepa-tech-sql-server.database.windows.net;Database=nepa-tech-dev;User=Lucas;Password=LJohnHubbard123;Trusted_Connection=False;Encrypt=True
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

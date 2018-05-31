@@ -12,6 +12,7 @@ namespace NEPATechDotnetCoreMVC.Controllers
         [HttpGet]
         public IActionResult Index(int? page)
         {
+            
             var dummyMembers = Enumerable.Range(1, 150).Select(x => "Android #" + x);
             var pager = new Pager(dummyMembers.Count(), page);
             Random random = new Random();
