@@ -25,22 +25,27 @@
 
                         @*The following snippit wiil be the base layout for each member profile.*@
 
-                        @foreach (var member in Model.Members)
+                        @foreach (var members in Model.Members)
                         {
-                            <div class="memberProfile">
-                                <div class="row">
-                                    <div class="col">
-                                        <a href=""><img src="~/images/pic01.jpg" width="75" height="75" /></a>
-                                    </div>
-                                    <div class="col-9 align-content-around">
-                                        <h6><a href="">@member</a></h6>
-                                        <p class="memberDescription">@Model.description</p>
-                                    </div>
-                                    <div class="col">
-                                        @Model.dateJoined
-                                    </div>
-                                </div>
-                            </div>
+                           <div class="row">
+                               <div class="col-sm-4 col-md-8 col-lg-12">
+                                   <img src="~/images/pic01.jpg" width="75" height="75"/>
+                                   <div class="row">
+                                       <div class="col-sm-4 col-md-8 col-lg-12">
+                                            <h6>@Html.ActionLink(string.Format("{0} {1}",members.Member.FName,members.Member.LName),"MEMBERNAME")</h6>
+
+                                       </div>
+                                       <div class="ccol-sm-4 col-md-8 col-lg-12">
+                                           <span><b>Last Active: @members.Profile.LastActive</b></span>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="row">
+                               <div class="col-sm-4 col-md-8 col-lg-12">
+                                   <p class="memberDescription">@members.Profile.Biography</p>
+                               </div>
+                           </div>
 
                         }
 

@@ -26,6 +26,10 @@ namespace NEPATechDotnetCoreMVC
             services.AddMvc();
             services.AddDbContext<NEPATechDbContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));//Server=nepa-tech-sql-server.database.windows.net;Database=nepa-tech-dev;User=Lucas;Password=LJohnHubbard123;Trusted_Connection=False;Encrypt=True
+
+
+
+            services.AddTransient<NEPATechDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

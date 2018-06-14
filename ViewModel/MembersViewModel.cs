@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NEPATechDotnetCoreMVC.Models.MockUsers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,21 +8,20 @@ namespace NEPATechDotnetCoreMVC.ViewModel
 {
     public class MembersViewModel
     {
-        public IEnumerable<string> Members { get; set; }
-        public string description { get; set; }
-        public string dateJoined { get; set; }
+        public IEnumerable<MemberProfileViewModel> Members { get; set; }
         public Pager Pager { get; set; }
     }
 
     public class Pager
     {
+        //Controls the pagination for the members list
         public Pager(int totalItems, int? page, int pageSize = 10)
         {
             // calculating the total, start and end pages
             var totalPages = (int)Math.Ceiling((decimal)totalItems / (decimal)pageSize);
             var currentPage = page != null ? (int)page : 1;
-            var startPage = currentPage - 5;
-            var endPage = currentPage + 4;
+            var startPage = currentPage - 5; // shows the previous 5 classes if possible
+            var endPage = currentPage + 4; //shows the next 4 page numbers if possible
 
             if(startPage <= 0)
             {

@@ -3,26 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using NEPATechDotnetCoreMVC.Data;
 using NEPATechDotnetCoreMVC.ViewModel;
 
 namespace NEPATechDotnetCoreMVC.Controllers
 {
     public class MembersController : Controller
     {
+        private readonly NEPATechDbContext _context;
+
+        public MembersController(NEPATechDbContext context)
+        {
+            _context = context;
+        }
+
         [HttpGet]
         public IActionResult Index(int? page)
         {
-            
-            var dummyMembers = Enumerable.Range(1, 150).Select(x => "Android #" + x);
+            //Creating a random collection of names
+            var dummyMembers = _context.MockUsers.ToList();
+            var dummyProfiles = _context.MemberProfiles.ToList();
+            var MembersProfiles = dummyMembers.Join(dummyProfiles, keyId => keyId.MemberProfileId, mKeyId => mKeyId.MemberProfileId, 
+                (member, profile) => new MemberProfileViewModel {
+                    Member = member,
+                    Profile = profile
+                }).ToList();
+
+            //Accesses the pager class which handles pagination
             var pager = new Pager(dummyMembers.Count(), page);
             Random random = new Random();
 
+            
             var viewModel = new MembersViewModel {
 
-                Members = dummyMembers.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
-                Pager = pager,
-                description = "decidedly descript description of describing a disciple of dionysus for doccumentation determination",
-                dateJoined = (random.Next(1, 12)) + "/" +(random.Next(1,28))+"/"+ (random.Next(1991, 2800))
+                Members = MembersProfiles.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                Pager = pager
             };
             return View(viewModel);
         }
