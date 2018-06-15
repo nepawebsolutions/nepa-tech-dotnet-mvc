@@ -7580,10 +7580,12 @@ a.text-dark:focus, a.text-dark:hover {
   padding-top: 10px;
   padding-bottom: 10px; }
 
-form #searchCustom {
-  width: 75%;
-  height: 25px;
+form #customSearchFormGroup {
+  padding: 2px 25px;
   margin: 0 auto; }
+
+#memberDetailsWrapper {
+  padding-top: 80px; }
 
 .vcenter {
   display: inline-block;

@@ -14,7 +14,9 @@
                 <div class="col">
                     <div id="searchWrapper">
                         <form>
-                            <input id="searchCustom" type="text" name="searchText" value="Search members..." onfocus="if (this.value=='Search members...') this.value='';" />
+                            <div class="form-group" id="customSearchFormGroup">
+                                <input id="searchCustom" class="form-control-sm" type="text" name="searchText" value="Search members..." onfocus="if (this.value=='Search members...') this.value='';" />
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -34,7 +36,7 @@
                                     <div class="col-sm-4 col-md-8 col-lg-10">
                                         <div class="row">
                                             <div class="col">
-                                                <h6 class="">@Html.ActionLink(members.Member.FName + " " + members.Member.LName, "Details")</h6>
+                                                <h6 class="">@Html.ActionLink(members.Member.FName + " " + members.Member.LName, "Details", new { id = members.Member.UserId })</h6>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -91,17 +93,17 @@
                                     @if (Model.Pager.CurrentPage > 1)
                                     {
                                         <li class="page-item">
-                                            <a class="page-link" asp-area="" asp-controller="Members" asp-action="Index">First</a>
-                                            </li">
+                                            @Html.ActionLink("First", "Index", null, null, new { @class = "page-link" })
+                                        </li">
 
                                         <li class="page-item">
-                                            <a class="page-link" asp-controller="Members" asp-route-page="@(Model.Pager.CurrentPage-1)">Previous</a>
-                                            </li">
-                                        }
+                                            @Html.ActionLink("Previous", "Index", null, new { page=Model.Pager.PreviousPage}, new { @class = "page-link" })
+                                        </li">
+                                    }
                                     @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
                                     {
                                     <li class="page-item @(page == Model.Pager.CurrentPage ? "active" : "")">
-                                        <a class="page-link" asp-controller="Members" asp-route-page="@(page)">@(page)</a>
+                                        @Html.ActionLink(page+"","Index",null,new { page }, new {@class = "page-link" })
                                         </li">
 
                                     }
@@ -110,15 +112,17 @@
                                     {
 
                                         <li class="page-item">
-                                            <a class="page-link" asp-controller="Members" asp-route-page="@(Model.Pager.CurrentPage+1)">Next</a>
+                                            @*<a class="page-link" asp-controller="Members" asp-route-page="@(Model.Pager.CurrentPage+1)">Next</a>*@
+                                            @Html.ActionLink("Next","Index",null,new { page=Model.Pager.NextPage }, new {@class = "page-link" })
                                             </li">
                                         <li class="page-item">
-                                            <a class="page-link" asp-controller="Members" asp-route-page="@(Model.Pager.TotalPages)">Last</a>
-                                            </li">
+                                            @*<a class="page-link" asp-controller="Members" asp-route-page="@(Model.Pager.TotalPages)">Last</a>*@
+                                            @Html.ActionLink("Last", "Index", null, new { page=Model.Pager.TotalPages }, new { @class = "page-link" })
+                                        </li">
 
-                                    }
+                                        }
 
-                                </ul>
+</ul>
                             </div>
                         </div>
                     }

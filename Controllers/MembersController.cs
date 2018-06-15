@@ -21,23 +21,23 @@ namespace NEPATechDotnetCoreMVC.Controllers
         [HttpGet]
         public IActionResult Index(int? page)
         {
+
+            //Accesses the pager class which handles pagination
+            var dummyMembers = _context.MockUsers;
+            var pager = new Pager(dummyMembers.Count(), page);
+
             //Creating a random collection of names
-            var dummyMembers = _context.MockUsers.ToList();
-            var dummyProfiles = _context.MemberProfiles.ToList();
+            var dummyProfiles = _context.MemberProfiles.Skip((pager.PreviousPage) * pager.PageSize).Take(pager.PageSize);
             var MembersProfiles = dummyMembers.Join(dummyProfiles, keyId => keyId.MemberProfileId, mKeyId => mKeyId.MemberProfileId, 
                 (member, profile) => new MemberProfileViewModel {
                     Member = member,
                     Profile = profile
-                }).ToList();
-
-            //Accesses the pager class which handles pagination
-            var pager = new Pager(dummyMembers.Count(), page);
-            Random random = new Random();
+                });
 
             
             var viewModel = new MembersViewModel {
 
-                Members = MembersProfiles.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                Members = MembersProfiles,
                 Pager = pager
             };
             return View(viewModel);
@@ -47,17 +47,17 @@ namespace NEPATechDotnetCoreMVC.Controllers
         {
 
             //Creating a random collection of names
-            var dummyMembers = _context.MockUsers.ToList();
-            var dummyProfiles = _context.MemberProfiles.ToList();
-            var dummySkills = _context.Skills.ToList();
-            var dummyProjects = _context.Projects.ToList();
+            var dummyMembers = _context.MockUsers;
+            var dummyProfiles = _context.MemberProfiles;
+            var dummySkills = _context.Skills;
+            var dummyProjects = _context.Projects;
 
             var MembersProfiles = dummyMembers.Join(dummyProfiles, keyId => keyId.MemberProfileId, mKeyId => mKeyId.MemberProfileId,
                 (member, profile) => new MemberProfileViewModel
                 {
                     Member = member,
                     Profile = profile
-                }).ToList();
+                });
 
             var viewModel = new MembersViewModel
             {

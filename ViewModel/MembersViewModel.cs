@@ -47,6 +47,8 @@ namespace NEPATechDotnetCoreMVC.ViewModel
             TotalPages = totalPages;
             StartPage = startPage;
             EndPage = endPage;
+            NextPage =  CurrentPage + 1;
+            PreviousPage =  CurrentPage - 1;
 
 
             
@@ -58,5 +60,7 @@ namespace NEPATechDotnetCoreMVC.ViewModel
         public int TotalPages { get; private set; }
         public int StartPage { get; private set; }
         public int EndPage { get; private set; }
+        public int NextPage { get; private set; }
+        public int PreviousPage { get; private set; }
     }
 }
