@@ -17,5 +17,6 @@ namespace NEPATechDotnetCoreMVC.Models.MemberProfile
         public int UserId { get; set; }
         public string Biography { get; set; }
         public DateTime LastActive { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

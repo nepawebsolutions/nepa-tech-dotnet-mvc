@@ -1,4 +1,4 @@
-/// <binding BeforeBuild='sass-compile, jquery-copy, bootstrap-copy' ProjectOpened='watch-sass' />
+/// <binding BeforeBuild='sass-compile, jquery-copy, bootstrap-copy' AfterBuild='sass-compile' Clean='sass-compile' ProjectOpened='watch-sass' />
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var rename = require('gulp-rename');

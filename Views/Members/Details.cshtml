@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model NEPATechDotnetCoreMVC.ViewModel.MembersViewModel
+
+<div id="detailsWrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 id="detailsFullName">@Model.Members.ElementAt(0).Member.FName @Model.Members.ElementAt(0).Member.LName</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+

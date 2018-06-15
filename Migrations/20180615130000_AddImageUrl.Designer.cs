@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NEPATechDotnetCoreMVC.Data;
 
 namespace NEPATechDotnetCoreMVC.Migrations
 {
     [DbContext(typeof(NEPATechDbContext))]
-    partial class NEPATechDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180615130000_AddImageUrl")]
+    partial class AddImageUrl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -113,14 +115,24 @@ namespace NEPATechDotnetCoreMVC.Migrations
                         .IsRequired()
                         .HasMaxLength(16);
 
-                    b.Property<int>("UserId");
+                    b.Property<int>("UserId1");
 
                     b.HasKey("SkillId");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Skills");
                 });
 
             modelBuilder.Entity("NEPATechDotnetCoreMVC.Models.Project.Project", b =>
+                {
+                    b.HasOne("NEPATechDotnetCoreMVC.Models.MockUsers.User", "UserId")
+                        .WithMany()
+                        .HasForeignKey("UserId1")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("NEPATechDotnetCoreMVC.Models.Skill.Skill", b =>
                 {
                     b.HasOne("NEPATechDotnetCoreMVC.Models.MockUsers.User", "UserId")
                         .WithMany()

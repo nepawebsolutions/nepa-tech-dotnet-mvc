@@ -42,5 +42,30 @@ namespace NEPATechDotnetCoreMVC.Controllers
             };
             return View(viewModel);
         }
+
+        public IActionResult Details(int id)
+        {
+
+            //Creating a random collection of names
+            var dummyMembers = _context.MockUsers.ToList();
+            var dummyProfiles = _context.MemberProfiles.ToList();
+            var dummySkills = _context.Skills.ToList();
+            var dummyProjects = _context.Projects.ToList();
+
+            var MembersProfiles = dummyMembers.Join(dummyProfiles, keyId => keyId.MemberProfileId, mKeyId => mKeyId.MemberProfileId,
+                (member, profile) => new MemberProfileViewModel
+                {
+                    Member = member,
+                    Profile = profile
+                }).ToList();
+
+            var viewModel = new MembersViewModel
+            {
+
+                Members = MembersProfiles.Where(dt => dt.Member.UserId == id),
+                Skills = dummySkills.Where(s => s.UserId == id)
+            };
+            return View(viewModel);
+        }
     }
 }

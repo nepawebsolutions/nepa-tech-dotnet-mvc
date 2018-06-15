@@ -11,6 +11,6 @@ namespace NEPATechDotnetCoreMVC.ViewModel
     {
             public User Member { get; set; }
             public MemberProfile Profile { get; set; }
-        
+            
     }
 }

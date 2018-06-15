@@ -7562,6 +7562,9 @@ a.text-dark:focus, a.text-dark:hover {
 .memberProfile .memberDescription {
   color: #808080; }
 
+#memberList .memberProfileBlock {
+  padding-top: 10px; }
+
 .memberProfile {
   border-bottom: 1px solid #eeeeee;
   padding-bottom: 5px;
@@ -7581,3 +7584,14 @@ form #searchCustom {
   width: 75%;
   height: 25px;
   margin: 0 auto; }
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none; }
+
+.row .col .memberBorderBottom {
+  border-bottom: 2px solid #eeeeee;
+  margin-left: -15px !important;
+  margin-right: -15px !important;
+  margin: 5px 0 10px; }

@@ -1,4 +1,6 @@
 ﻿using NEPATechDotnetCoreMVC.Models.MockUsers;
+using NEPATechDotnetCoreMVC.Models.Project;
+using NEPATechDotnetCoreMVC.Models.Skill;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,8 @@ namespace NEPATechDotnetCoreMVC.ViewModel
     public class MembersViewModel
     {
         public IEnumerable<MemberProfileViewModel> Members { get; set; }
+        public IEnumerable<Skill> Skills { get; set; }
+        public IEnumerable<Project> Projects { get; set; }
         public Pager Pager { get; set; }
     }
 

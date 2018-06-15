@@ -2,14 +2,14 @@
 @{
     ViewData["Title"] = "Members";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
+
 }
 @model NEPATechDotnetCoreMVC.ViewModel.MembersViewModel
 
 <div class="inner">
     @Html.Partial("_HeaderPartial", null)
     <div class="main">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col">
                     <div id="searchWrapper">
@@ -25,27 +25,54 @@
 
                         @*The following snippit wiil be the base layout for each member profile.*@
 
+                        @{  var last = Model.Members.Last(); }
                         @foreach (var members in Model.Members)
                         {
-                           <div class="row">
-                               <div class="col-sm-4 col-md-8 col-lg-12">
-                                   <img src="~/images/pic01.jpg" width="75" height="75"/>
-                                   <div class="row">
-                                       <div class="col-sm-4 col-md-8 col-lg-12">
-                                            <h6>@Html.ActionLink(string.Format("{0} {1}",members.Member.FName,members.Member.LName),"MEMBERNAME")</h6>
+                            <div class="memberProfileBlock">
+                                <div class="row">
+                                    <img src="~/images/pic01.jpg" width="75" height="75" />
+                                    <div class="col-sm-4 col-md-8 col-lg-10">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6 class="">@Html.ActionLink(members.Member.FName + " " + members.Member.LName, "Details")</h6>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p><b>Last Active: </b>@members.Profile.LastActive.ToShortDateString()</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>
+                                                    @{
+                                                        if(members.Profile.Biography.Length > 250)
+                                                        {
+                                                            @members.Profile.Biography.Substring(0, 250)<text>...</text>
+                                                        }
+                                                        else
+                                                        {
+                                                            @members.Profile.Biography
 
-                                       </div>
-                                       <div class="ccol-sm-4 col-md-8 col-lg-12">
-                                           <span><b>Last Active: @members.Profile.LastActive</b></span>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="row">
-                               <div class="col-sm-4 col-md-8 col-lg-12">
-                                   <p class="memberDescription">@members.Profile.Biography</p>
-                               </div>
-                           </div>
+                                                        }
+                                                    }
+                                                    <br />
+                                                    @Html.ActionLink("View Profile", "Details", new { id = members.Member.UserId })
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    @if (!members.Equals(last))
+                                    {   
+                                        <div class="memberBorderBottom"></div>
+                                    }
+                                </div>
+                            </div>
+
 
                         }
 
