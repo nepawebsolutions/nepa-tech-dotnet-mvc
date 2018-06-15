@@ -35,7 +35,7 @@ form #customSearchFormGroup{
 }
 
 #memberDetailsWrapper{
-    padding-top:80px;
+    padding: 80px 80px 0 80px;
 }
 
 .vcenter {
@@ -49,4 +49,33 @@ form #customSearchFormGroup{
     margin-left:-15px !important;
     margin-right: -15px !important;
     margin: 5px 0 10px;
+}
+
+#detailsFullName {
+    border-bottom: solid 5px #f56a6a;
+    color: #808080;
+    text-align:left;
+    font-size:26px;
+    font-weight:bold;
+}
+#skillsHeader {
+    border-bottom: solid 5px #f56a6a;
+    color: #808080;
+    text-align: left;
+    font-size: 26px;
+    font-weight: bold;
+    margin-top:15px;
+    margin-bottom:15px;
+}
+#detailsProfilePic {
+    margin-top: 15px;
+    border: 2px solid #dddddd;
+    margin: 30px;
+}
+.detailsShiftRight{
+    margin-left:15px !important;
+}
+
+#skillsWrapper{
+    margin-bottom:150px !important;
 }

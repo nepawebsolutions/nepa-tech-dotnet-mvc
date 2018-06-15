@@ -4,16 +4,31 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using NEPATechDotnetCoreMVC.Data;
 using NEPATechDotnetCoreMVC.Models;
+using NEPATechDotnetCoreMVC.ViewModel;
 
 namespace NEPATechDotnetCoreMVC.Controllers
 {
     public class HomeController : Controller
     {
+        private NEPATechDbContext _context;
+        private HomeViewModel membersOnWebsite = null;
+       
+        public HomeController(NEPATechDbContext _context)
+        {
+            this._context = _context;
+
+        }
+
         public IActionResult Index()
         {
+            membersOnWebsite = new HomeViewModel
+            {
+                MembersOnWebsite = _context.MockUsers.Count()
+            };
             ViewData["Title"] = "Welcome ";
-            return View();
+            return View(membersOnWebsite);
         }
         
 
