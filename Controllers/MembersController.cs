@@ -47,10 +47,10 @@ namespace NEPATechDotnetCoreMVC.Controllers
         {
 
             //Creating a random collection of names
-            var dummyMembers = _context.MockUsers;
-            var dummyProfiles = _context.MemberProfiles;
-            var dummySkills = _context.Skills;
-            var dummyProjects = _context.Projects;
+            var dummyMembers = _context.MockUsers.Where(mu=> mu.UserId == id);
+            var dummyProfiles = _context.MemberProfiles.Where(mu => mu.UserId == id);
+            var dummySkills = _context.Skills.Where(mu => mu.UserId == id);
+            var dummyProjects = _context.Projects.Where(mu => mu.UserId == id);
 
             var MembersProfiles = dummyMembers.Join(dummyProfiles, keyId => keyId.MemberProfileId, mKeyId => mKeyId.MemberProfileId,
                 (member, profile) => new MemberProfileViewModel

@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Contact Us";
 }
+@model NEPATechDotnetCoreMVC.ViewModel.ContactViewModel
 @*<h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>*@
 
@@ -13,14 +14,17 @@
                     <div class="formwrapper">
                         <h4>Get in Touch</h4>
                         <p id="description">Please fill out this quick form and we will be in touch</p>
-                        <form method="post">
-                            <input type="text" name="name" value="Name" onfocus="if (this.value=='Name') this.value='';" />
-                            <br />
-                            <input type="text" name="email" value="Your email address" onfocus="if (this.value=='Your email address') this.value='';" />
-                            <br />
-                            <textarea rows="4" cols="50" onfocus="if (this.value=='What\'s wrong?') this.value='';">What's wrong?</textarea>
-                            <br />
-                            <input type="submit" name="submit" value="Send" class="special fit"/>
+                        <form runat="server" method="post">
+                            <fieldset>
+                                <input runat="server" asp-for="fullName" type ="text" id="txtName" name="name" value="Name" onfocus="if (this.value=='Name') this.value='';" />
+
+                                <br />
+                                <input runat="server" type="text" id="txtEmail" name="email" value="Your email address" onfocus="if (this.value=='Your email address') this.value='';" />
+                                <br />
+                                <textarea runat="server" rows="4" id="txtMessage" cols="50" onfocus="if (this.value=='What\'s wrong?') this.value='';">What's wrong?</textarea>
+                                <br />
+                                <input runat="server" type="submit" name="submit" value="Send" class="special fit"/>
+                            </fieldset>
                         </form>
                     </div>
                 </div>
