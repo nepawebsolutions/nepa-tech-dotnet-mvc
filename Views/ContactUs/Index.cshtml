@@ -14,18 +14,29 @@
                     <div class="formwrapper">
                         <h4>Get in Touch</h4>
                         <p id="description">Please fill out this quick form and we will be in touch</p>
+                        @{
+                            if (Model.isComplaintSent)
+                            {
+                                <p name="submitValidation" id="submitValidation">Your concerns have been heard, please wait for someone to contact you back!</p>
+
+                            }
+                        }
+
                         <form runat="server" method="post">
                             <fieldset>
-                                <input runat="server" asp-for="fullName" type ="text" id="txtName" name="name" value="Name" onfocus="if (this.value=='Name') this.value='';" />
-
+                                <input runat="server" type="text" id="txtName" name="fname" value="First Name" onfocus="if (this.value=='First Name') this.value='';" />
+                                <br />
+                                <input runat="server" type="text" id="txtName" name="lname" value="Last Name" onfocus="if (this.value=='Last Name') this.value='';" />
                                 <br />
                                 <input runat="server" type="text" id="txtEmail" name="email" value="Your email address" onfocus="if (this.value=='Your email address') this.value='';" />
                                 <br />
-                                <textarea runat="server" rows="4" id="txtMessage" cols="50" onfocus="if (this.value=='What\'s wrong?') this.value='';">What's wrong?</textarea>
+                                <textarea runat="server" rows="4" id="txtMessage" name="complaint" cols="50" onfocus="if (this.value=='What\'s wrong?') this.value='';">What's wrong?</textarea>
                                 <br />
-                                <input runat="server" type="submit" name="submit" value="Send" class="special fit"/>
+                                <input runat="server" type="submit" name="submitComplaint" value="Send" class="special fit" />
+                                <button type="button" class="button special fit small">View Complaints</button>
                             </fieldset>
                         </form>
+                        
                     </div>
                 </div>
                 <div class="col" id="contactInfo">

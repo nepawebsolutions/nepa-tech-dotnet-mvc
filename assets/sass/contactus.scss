@@ -19,7 +19,7 @@
 .formwrapper form {
     padding: 0;
     padding-left: 10px;
-    padding-top: 40px;
+    padding-top: 15px;
     color: #d1d1d1;
 }
 
@@ -59,4 +59,12 @@
 #eventsContainer a{
     font-size:20px;
     margin-top:20px;
+}
+
+/*Miscellaneous*/
+
+.formwrapper #submitValidation{
+    text-align:center;
+    padding-top:15px;
+    font-weight:bold;
 }
