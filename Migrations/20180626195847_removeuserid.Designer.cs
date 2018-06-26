@@ -11,9 +11,10 @@ using System;
 namespace NEPATechDotnetCoreMVC.Migrations
 {
     [DbContext(typeof(NEPATechDbContext))]
-    partial class NEPATechDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180626195847_removeuserid")]
+    partial class removeuserid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

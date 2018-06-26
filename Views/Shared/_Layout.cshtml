@@ -71,13 +71,14 @@
                             <form method="post" asp-controller="Account" asp-action="Register" onsubmit="return validateForm(this);" autocomplete="off">
                                 <div class="form-inline">
                                     <input runat="server" type="text" name="fname" class="form-control " placeholder="First Name" required />
-                                    <input runat="server" type="text" name="lname" class="form-control" placeholder="Last Name" required />
+                                    <input runat="server" type="text"  name="lname" class="form-control" placeholder="Last Name" required />
                                 </div>
                                     <input runat="server" type="text" id="email" name="email" class="form-control" placeholder="Email Address"  required/>
                                     <input runat="server" type="text" id="cemail" name="confirmEmail" class="form-control" placeholder="Confirm Email Address" required/>
-                                    <input runat="server" type="text" id="pass" name="password" class="form-control" placeholder="Password" required/>
-                                    <input runat="server" type="text" id="cpass" name="confirmPassword" class="form-control" placeholder="Confirm Password" required/>
-                                    <input runat="server" type="submit" name="registerSubmit" class="special" placeholder="Register"/>
+                                    <input runat="server" type="password" id="pass" name="password" class="form-control" placeholder="Password" required/>
+                                    <input runat="server" type="password" id="cpass" name="confirmPassword" class="form-control" placeholder="Confirm Password" required/>
+                                    <br />
+                                    <input runat="server" type="submit" name="registerSubmit" class="special fit" value="Register"/>
                             </form>
                         </div>
                     </div>

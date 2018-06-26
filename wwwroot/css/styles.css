@@ -7514,7 +7514,10 @@ html {
   position: fixed;
   top: 315px;
   margin-left: 20px;
-  margin-right: 20px; }
+  width: 300px; }
+  .loginMenu form {
+    margin-left: 20px;
+    margin-right: 20px; }
 
 #registrationOverlay {
   display: none;
@@ -7524,12 +7527,15 @@ html {
   float: none;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
   z-index: 10000;
   padding-top: 10%;
   padding-bottom: 15%; }
+  #registrationOverlay .registrationHeader {
+    margin-bottom: 35px;
+    border-bottom: 5px solid #f56a6a; }
   #registrationOverlay col {
     padding: 0;
     margin: 0; }
