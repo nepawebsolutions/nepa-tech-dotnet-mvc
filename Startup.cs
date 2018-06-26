@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NEPATechDotnetCoreMVC.Data;
 using Microsoft.EntityFrameworkCore;
+using NEPATechDotnetCoreMVC.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace NEPATechDotnetCoreMVC
 {
@@ -25,9 +27,11 @@ namespace NEPATechDotnetCoreMVC
         {
             services.AddMvc();
             services.AddDbContext<NEPATechDbContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));//Server=nepa-tech-sql-server.database.windows.net;Database=nepa-tech-dev;User=Lucas;Password=LJohnHubbard123;Trusted_Connection=False;Encrypt=True
+               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<NEPATechDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddTransient<NEPATechDbContext>();
         }
@@ -52,6 +56,8 @@ namespace NEPATechDotnetCoreMVC
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseAuthentication();
         }
     }
 }

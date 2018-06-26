@@ -7498,6 +7498,9 @@ a.text-dark:focus, a.text-dark:hover {
 .invisible {
   visibility: hidden !important; }
 
+html {
+  font-size: 16px !important; }
+
 #header #formatTitleHeader {
   color: #808080;
   text-align: left;
@@ -7506,6 +7509,60 @@ a.text-dark:focus, a.text-dark:hover {
 
 .text-icon-red {
   color: #f56a6a !important; }
+
+.loginMenu {
+  position: fixed;
+  top: 315px;
+  margin-left: 20px;
+  margin-right: 20px; }
+
+#registrationOverlay {
+  display: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  float: none;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  padding-top: 10%;
+  padding-bottom: 15%; }
+  #registrationOverlay col {
+    padding: 0;
+    margin: 0; }
+  #registrationOverlay .smallExitButton {
+    position: relative;
+    float: right; }
+  #registrationOverlay #registrationError {
+    display: none;
+    padding-left: 5px;
+    font-size: 16px;
+    font-style: italic; }
+  #registrationOverlay form {
+    padding: 0;
+    margin: 0; }
+    #registrationOverlay form input {
+      margin-right: 2px;
+      margin-bottom: 5px; }
+  #registrationOverlay .registrationInner {
+    padding: 0;
+    margin: 0;
+    min-height: 300px;
+    background-color: #f2f2f2;
+    border: 2px solid #a2a2a2;
+    border-radius: 5px 5px 5px 5px;
+    padding: 35px;
+    margin: 0 auto;
+    float: none;
+    position: relative;
+    vertical-align: middle; }
+    @media only screen and (min-width: 1200px) {
+      #registrationOverlay .registrationInner {
+        width: 800px;
+        left: 172.5px; } }
 
 .formwrapper {
   margin-top: 50px;

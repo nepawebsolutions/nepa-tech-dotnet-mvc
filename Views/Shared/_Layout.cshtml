@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,16 +9,6 @@
     <link rel="stylesheet" href="~/css/styles.css" />
     <link rel="stylesheet" href="~/css/font-awesome.css" />
 
-    @*<environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>*@
 </head>
 <body>
 
@@ -32,14 +23,6 @@
         <!-- Sidebar -->
         <div id="sidebar">
             <div class="inner">
-
-                <!-- Search -->
-                @*<section id="search" class="alt">
-                    <form method="post" action="#">
-                        <input type="text" name="query" id="query" placeholder="Search" />
-                    </form>
-                </section>*@
-
                 <!-- Menu -->
                 <nav id="menu">
                     <header class="major">
@@ -53,112 +36,84 @@
 
                     </ul>
                 </nav>
-
-                <!-- Section -->
-                @*<section>
+            </div>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="loginMenu">
                     <header class="major">
-                        <h2>Ante interdum</h2>
+                        <h2>Login</h2>
                     </header>
-                    <div class="mini-posts">
-                        <article>
-                            <a href="#" class="image"><img src="~/images/pic07.jpg" alt="" /></a>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                        </article>
-                        <article>
-                            <a href="#" class="image"><img src="~/images/pic08.jpg" alt="" /></a>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                        </article>
-                        <article>
-                            <a href="#" class="image"><img src="~/images/pic09.jpg" alt="" /></a>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                        </article>
-                    </div>
-                    <ul class="actions">
-                        <li><a href="#" class="button">More</a></li>
-                    </ul>
-                </section>*@
-
-                <!-- Section -->
-                @*<section>
-                    <header class="major">
-                        <h2>Get in touch</h2>
-                    </header>
-                    <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                    <ul class="contact">
-                        <li class="fa-envelope-o"><a href="#">information@untitled.tld</a></li>
-                        <li class="fa-phone">(000) 000-0000</li>
-                        <li class="fa-home">
-                            1234 Somewhere Road #8254<br />
-                            Nashville, TN 00000-0000
-                        </li>
-                    </ul>
-                </section>*@
-
-                <!-- Footer -->
-                @*<footer id="footer">
-                    <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-                </footer>*@
-
+                    <form>
+                        <fieldset>
+                            <input runat="server" type="text" name="emailLogin" placeholder="Email Address" class="text-muted"required/>
+                            <br />
+                            <input runat="server" type="text" name="passwordLogin" placeholder="Password" class="text-muted" required/>
+                            <br />
+                            <input runat="server" type="submit" name="loginSubmit" class="special fit" />
+                            @Html.ActionLink("Create new account", "Register", "Account", null, new { @class = "btn special fit", @onclick = "toggleRegistrationOverlay(true); return false;" })
+                            @Html.ActionLink("Forgot Password", "ForgotPassword", "Account", null, new { @class = "btn special fit" })
+                        </fieldset>
+                    </form>
+                </div>
+            }
             </div>
         </div>
-
-    </div>
+        <div id="registrationOverlay">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <div class="registrationInner">
+                            <input type="button" class="button special small smallExitButton" value="x" onclick="toggleRegistrationOverlay(false)" />
+                            <div class="registrationHeader">
+                                <h2 class="logo">Registration</h2>
+                                <p id="registrationError" class="text-danger">*Passwords do not match!</p>
+                            </div>
+                            <form method="post" asp-controller="Account" asp-action="Register" onsubmit="return validateForm(this);" autocomplete="off">
+                                <div class="form-inline">
+                                    <input runat="server" type="text" name="fname" class="form-control " placeholder="First Name" required />
+                                    <input runat="server" type="text" name="lname" class="form-control" placeholder="Last Name" required />
+                                </div>
+                                    <input runat="server" type="text" id="email" name="email" class="form-control" placeholder="Email Address"  required/>
+                                    <input runat="server" type="text" id="cemail" name="confirmEmail" class="form-control" placeholder="Confirm Email Address" required/>
+                                    <input runat="server" type="text" id="pass" name="password" class="form-control" placeholder="Password" required/>
+                                    <input runat="server" type="text" id="cpass" name="confirmPassword" class="form-control" placeholder="Confirm Password" required/>
+                                    <input runat="server" type="submit" name="registerSubmit" class="special" placeholder="Register"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <!-- Scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/skel.min.js"></script>
     <script src="~/lib/util.js"></script>
     <script src="~/lib/main.js"></script>
+    <script type="text/javascript">
 
-    @*<nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">NEPATechDotnetCoreMVC</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2017 - NEPATechDotnetCoreMVC</p>
-        </footer>
-    </div>*@
+        function validateForm(form) {
+            if (form.password.value != form.confirmPassword.value) {
 
-    @*<environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+                document.getElementById("registrationError").textContent = "*Passwords do not match!";
+                document.getElementById("registrationError").style.display = "block";
+                return false;
+            } else if (form.email.value != form.confirmEmail.value) {
+                document.getElementById("registrationError").textContent = "*Emails do not match!";
+                document.getElementById("registrationError").style.display = "block";
+                return false;
+            }
+            return true;
 
-    @RenderSection("Scripts", required: false)*@
+        }
+        function toggleRegistrationOverlay(booleanEnabled) {
+            
+            if (booleanEnabled) {
+                document.getElementById("registrationOverlay").style.display = "block";
+            } else {
+                document.getElementById("registrationOverlay").style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

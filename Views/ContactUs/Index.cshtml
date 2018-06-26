@@ -24,13 +24,13 @@
 
                         <form runat="server" method="post">
                             <fieldset>
-                                <input runat="server" type="text" id="txtName" name="fname" value="First Name" onfocus="if (this.value=='First Name') this.value='';" />
+                                <input runat="server" type="text" id="txtName" name="fname" placeholder="First Name" required/>
                                 <br />
-                                <input runat="server" type="text" id="txtName" name="lname" value="Last Name" onfocus="if (this.value=='Last Name') this.value='';" />
+                                <input runat="server" type="text" id="txtName" name="lname" placeholder="Last Name" required/>
                                 <br />
-                                <input runat="server" type="text" id="txtEmail" name="email" value="Your email address" onfocus="if (this.value=='Your email address') this.value='';" />
+                                <input runat="server" type="text" id="txtEmail" name="email" placeholder="Your email address" required/>
                                 <br />
-                                <textarea runat="server" rows="4" id="txtMessage" name="complaint" cols="50" onfocus="if (this.value=='What\'s wrong?') this.value='';">What's wrong?</textarea>
+                                <textarea runat="server" rows="4" id="txtMessage" name="complaint" placeholder="What's Wrong" cols="50" required></textarea>
                                 <br />
                                 <input runat="server" type="submit" name="submitComplaint" value="Send" class="special fit" />
                                 <button type="button" class="button special fit small">View Complaints</button>

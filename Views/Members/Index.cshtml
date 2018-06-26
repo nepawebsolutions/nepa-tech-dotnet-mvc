@@ -27,7 +27,7 @@
 
                         @*The following snippit wiil be the base layout for each member profile.*@
 
-                        @{  var last = Model.Members.Last(); }
+                        @{  var last = Model.Members.LastOrDefault(); }
                         @foreach (var members in Model.Members)
                         {
                             <div class="memberProfileBlock">
