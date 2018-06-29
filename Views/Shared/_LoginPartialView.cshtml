@@ -1,0 +1,42 @@
+﻿@model NEPATechDotnetCoreMVC.ViewModel.AccountViewModels.LoginViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="loginMenu">
+    @Html.Partial("_HeaderPartialNoIcons", null)
+    <div class="loginWrapper">
+        <div class="loginMenuContent">
+            <div asp-validation-summary="All"></div>
+            <form asp-controller="Account" asp-action="Login">
+                @Html.Hidden("ReturnUrl", Context.Request.Path)
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" />
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password"></label>
+                        <input asp-for="Password" />
+                        <span asp-validation-for="Password"></span>
+
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="RememberMe">
+                        <label class="form-check-label" asp-for="RememberMe">
+                            Remember Me
+                        </label>
+                    </div>
+                    <br />
+                    <input runat="server" type="submit" name="loginSubmit" value="Login" class="special fit" />
+                    @*@Html.ActionLink("Create new account", "Register", "Account", null, new { @class = "btn special fit", @onclick = "toggleRegistrationOverlay(true); return false;", @id="RegisterBtn" })*@
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="loginFooter">
+        @Html.ActionLink("Forgot your password?", "ForgotPassword", "Account", null, new { @class = "btn special fit" })
+    </div>
+</div>

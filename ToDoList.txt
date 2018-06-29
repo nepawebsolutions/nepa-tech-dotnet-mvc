@@ -7,8 +7,14 @@
 2. Create roles in identity so that the admin can only see certain information
 3. Add a role check for the button in contact us
 4. Create the login/register for the website
-5. Add validation to the contact us page
+
 6. Remove all the fake users prior to creating new users so that the member list is accurate
 7. Add validation to the login/register pages
 8. Add a way using VUE to view the complaints
 9. Wire in the correct information to the website (contact information, member information, home page, etc)
+
+
+Completed
+=====================
+
+5. Add validation to the contact us page (GOOOOOD)

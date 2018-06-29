@@ -7510,17 +7510,64 @@ html {
 .text-icon-red {
   color: #f56a6a !important; }
 
+.login {
+  padding-top: 10px;
+  margin-top: 10px;
+  text-align: center;
+  border-top: solid 2px #f56a6a; }
+
 .loginMenu {
-  position: fixed;
-  top: 315px;
-  margin-left: 20px;
-  width: 300px; }
-  .loginMenu form {
-    margin-left: 20px;
-    margin-right: 20px; }
+  width: 475px;
+  margin: 0 auto;
+  margin-top: 50px; }
+  .loginMenu .loginMenuContent {
+    padding: 35px;
+    padding-bottom: 0;
+    padding-top: 5px;
+    background-color: #fafafa; }
+    .loginMenu .loginMenuContent form {
+      margin: 0;
+      padding: 0; }
+      .loginMenu .loginMenuContent form input {
+        border-radius: 0; }
+
+.loginFooter {
+  width: 100%;
+  position: relative;
+  background-color: #f2f2f2;
+  height: 50px;
+  color: white;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  line-height: 50px; }
+
+/*Register menu*/
+.registerMenu {
+  width: 475px;
+  margin: 0 auto;
+  margin-top: 50px; }
+  .registerMenu .registerMenuContent {
+    padding: 35px;
+    padding-bottom: 0;
+    padding-top: 5px;
+    background-color: #fafafa; }
+    .registerMenu .registerMenuContent form {
+      margin: 0;
+      padding: 0; }
+  .registerMenu .registerFooter {
+    width: 100%;
+    position: relative;
+    height: 50px;
+    color: white;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    line-height: 50px; }
+    .registerMenu .registerFooter input {
+      border-radius: 0; }
 
 #registrationOverlay {
-  display: none;
   margin: 0;
   padding: 0;
   position: fixed;
@@ -7530,9 +7577,10 @@ html {
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
-  z-index: 10000;
-  padding-top: 10%;
-  padding-bottom: 15%; }
+  z-index: 1000000;
+  padding-top: 50px;
+  pointer-events: none;
+  /*This is the key.*/ }
   #registrationOverlay .registrationHeader {
     margin-bottom: 35px;
     border-bottom: 5px solid #f56a6a; }
@@ -7550,9 +7598,11 @@ html {
   #registrationOverlay form {
     padding: 0;
     margin: 0; }
+    #registrationOverlay form label {
+      margin-right: 2px; }
     #registrationOverlay form input {
-      margin-right: 2px;
-      margin-bottom: 5px; }
+      margin-right: 10px;
+      margin-left: 2.5px; }
   #registrationOverlay .registrationInner {
     padding: 0;
     margin: 0;
@@ -7564,6 +7614,7 @@ html {
     margin: 0 auto;
     float: none;
     position: relative;
+    pointer-events: auto;
     vertical-align: middle; }
     @media only screen and (min-width: 1200px) {
       #registrationOverlay .registrationInner {

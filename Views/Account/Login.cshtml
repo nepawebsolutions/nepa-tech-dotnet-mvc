@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model NEPATechDotnetCoreMVC.ViewModel.AccountViewModels.LoginViewModel
+
+
+<div class="inner">
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                @{Html.RenderPartial("_LoginPartialView", Model);}
+            </div>
+        </div>
+    </div>
+</div>

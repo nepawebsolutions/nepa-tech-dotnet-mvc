@@ -1,4 +1,9 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
+@using NEPATechDotnetCoreMVC.ViewModel.AccountViewModels;
+
+@inject SignInManager<ApplicationUser> _signInManager;
+@inject UserManager<ApplicationUser> _userManager;
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +13,7 @@
 
     <link rel="stylesheet" href="~/css/styles.css" />
     <link rel="stylesheet" href="~/css/font-awesome.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
 </head>
 <body>
@@ -33,88 +39,32 @@
                         <li><a asp-area="" asp-controller="ContactUs" asp-action="eventsRedirect" target="_blank">Events</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="Members">Members</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a></li>
-
                     </ul>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <div class="login">
+                            @Html.ActionLink("Login", "Login", "Account", null, new { @class = " " })
+                            @Html.ActionLink("Register", "Register", "Account", null, new { @class = " " })
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "btn special fit" })
+
+                    }
                 </nav>
             </div>
-            @if (!User.Identity.IsAuthenticated)
-            {
-                <div class="loginMenu">
-                    <header class="major">
-                        <h2>Login</h2>
-                    </header>
-                    <form>
-                        <fieldset>
-                            <input runat="server" type="text" name="emailLogin" placeholder="Email Address" class="text-muted"required/>
-                            <br />
-                            <input runat="server" type="text" name="passwordLogin" placeholder="Password" class="text-muted" required/>
-                            <br />
-                            <input runat="server" type="submit" name="loginSubmit" class="special fit" />
-                            @Html.ActionLink("Create new account", "Register", "Account", null, new { @class = "btn special fit", @onclick = "toggleRegistrationOverlay(true); return false;" })
-                            @Html.ActionLink("Forgot Password", "ForgotPassword", "Account", null, new { @class = "btn special fit" })
-                        </fieldset>
-                    </form>
-                </div>
-            }
-            </div>
         </div>
-        <div id="registrationOverlay">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col">
-                        <div class="registrationInner">
-                            <input type="button" class="button special small smallExitButton" value="x" onclick="toggleRegistrationOverlay(false)" />
-                            <div class="registrationHeader">
-                                <h2 class="logo">Registration</h2>
-                                <p id="registrationError" class="text-danger">*Passwords do not match!</p>
-                            </div>
-                            <form method="post" asp-controller="Account" asp-action="Register" onsubmit="return validateForm(this);" autocomplete="off">
-                                <div class="form-inline">
-                                    <input runat="server" type="text" name="fname" class="form-control " placeholder="First Name" required />
-                                    <input runat="server" type="text"  name="lname" class="form-control" placeholder="Last Name" required />
-                                </div>
-                                    <input runat="server" type="text" id="email" name="email" class="form-control" placeholder="Email Address"  required/>
-                                    <input runat="server" type="text" id="cemail" name="confirmEmail" class="form-control" placeholder="Confirm Email Address" required/>
-                                    <input runat="server" type="password" id="pass" name="password" class="form-control" placeholder="Password" required/>
-                                    <input runat="server" type="password" id="cpass" name="confirmPassword" class="form-control" placeholder="Confirm Password" required/>
-                                    <br />
-                                    <input runat="server" type="submit" name="registerSubmit" class="special fit" value="Register"/>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+
 
     <!-- Scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.8.23/jquery-ui.min.js" type="text/javascript"></script>
     <script src="~/lib/skel.min.js"></script>
     <script src="~/lib/util.js"></script>
     <script src="~/lib/main.js"></script>
     <script type="text/javascript">
-
-        function validateForm(form) {
-            if (form.password.value != form.confirmPassword.value) {
-
-                document.getElementById("registrationError").textContent = "*Passwords do not match!";
-                document.getElementById("registrationError").style.display = "block";
-                return false;
-            } else if (form.email.value != form.confirmEmail.value) {
-                document.getElementById("registrationError").textContent = "*Emails do not match!";
-                document.getElementById("registrationError").style.display = "block";
-                return false;
-            }
-            return true;
-
-        }
-        function toggleRegistrationOverlay(booleanEnabled) {
-            
-            if (booleanEnabled) {
-                document.getElementById("registrationOverlay").style.display = "block";
-            } else {
-                document.getElementById("registrationOverlay").style.display = "none";
-            }
-        }
     </script>
 </body>
 </html>

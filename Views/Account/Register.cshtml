@@ -2,7 +2,9 @@
 @{
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
-@model NEPATechDotnetCoreMVC.ViewModel.RegisterViewModel
-<h2>Register</h2>
+@model NEPATechDotnetCoreMVC.ViewModel.AccountViewModels.RegisterViewModel
+
+@{Html.RenderPartial("_RegisterPartialView", Model);}
 

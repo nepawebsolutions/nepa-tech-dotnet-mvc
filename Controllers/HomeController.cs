@@ -23,6 +23,7 @@ namespace NEPATechDotnetCoreMVC.Controllers
 
         public IActionResult Index()
         {
+            var a = User;
             membersOnWebsite = new HomeViewModel
             {
                 MembersOnWebsite = _context.MockUsers.Count()
