@@ -6,4 +6,20 @@
 <!-- Header -->
 <header id="header">
     <a class="logo" id="formatTitleHeader" asp-area="" asp-controller="Home" asp-action="Index">@ViewData["Title"]</a>
+    <ul class="icons">
+        @if (!User.Identity.IsAuthenticated)
+        {
+            @if (ViewData["Title"].Equals("Login"))
+            {
+                <li class="login">@Html.ActionLink("Register", "Register", "Account", null, new { @class = "last" })</li>
+            }
+            else{
+                <li class="login">@Html.ActionLink("Login", "Login", "Account", null, new { @class = " " })</li>
+            }
+        }
+        else
+        {
+            <li class="login">@Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "btn special fit" })</li>
+        }
+    </ul>
 </header>

@@ -10,5 +10,15 @@
         <li><a href="https://www.meetup.com/NEPA-js/" target="_blank" rel="noopener noreferrer" class="icon fa-meetup"><span class="label">Meetup</span></a></li>
         <li><a href="https://www.facebook.com/NEPATechGroup/" target="_blank" rel="noopener noreferrer" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
         <li><a href="https://www.reddit.com/r/NEPATech/" class="icon fa-reddit-alien"><span class="label">Reddit</span></a></li>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <li class="login">@Html.ActionLink("Login", "Login", "Account", null, new { @class = " " })</li>
+            <li class="login">@Html.ActionLink("Register", "Register", "Account", null, new { @class = "last" })</li>
+        }
+        else
+        {
+            <li class="login">@Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "btn special fit" })</li>
+
+        }
     </ul>
 </header>

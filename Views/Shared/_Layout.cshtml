@@ -31,6 +31,8 @@
             <div class="inner">
                 <!-- Menu -->
                 <nav id="menu">
+
+                    
                     <header class="major">
                         <h2>Menu</h2>
                     </header>
@@ -40,20 +42,9 @@
                         <li><a asp-area="" asp-controller="Home" asp-action="Members">Members</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a></li>
                     </ul>
-                    @if (!User.Identity.IsAuthenticated)
-                    {
-                        <div class="login">
-                            @Html.ActionLink("Login", "Login", "Account", null, new { @class = " " })
-                            @Html.ActionLink("Register", "Register", "Account", null, new { @class = " " })
-                        </div>
-                    }
-                    else
-                    {
-                        @Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "btn special fit" })
-
-                    }
                 </nav>
             </div>
+            
         </div>
     </div>
 

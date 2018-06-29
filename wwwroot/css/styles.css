@@ -7510,15 +7510,22 @@ html {
 .text-icon-red {
   color: #f56a6a !important; }
 
-.login {
-  padding-top: 10px;
-  margin-top: 10px;
-  text-align: center;
-  border-top: solid 2px #f56a6a; }
+.icons .login a {
+  background-color: #F44B4B;
+  text-decoration: none;
+  padding: 5px 15px;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin: 0; }
+
+.icons .login a:hover {
+  color: white !important;
+  background-color: #f56a6a; }
 
 .loginMenu {
-  width: 475px;
-  margin: 0 auto;
+  width: 100%;
   margin-top: 50px; }
   .loginMenu .loginMenuContent {
     padding: 35px;
@@ -7544,8 +7551,9 @@ html {
 
 /*Register menu*/
 .registerMenu {
-  width: 475px;
+  float: none;
   margin: 0 auto;
+  width: 100%;
   margin-top: 50px; }
   .registerMenu .registerMenuContent {
     padding: 35px;

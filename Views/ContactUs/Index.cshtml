@@ -2,6 +2,7 @@
     ViewData["Title"] = "Contact Us";
 }
 @model NEPATechDotnetCoreMVC.ViewModel.ContactViewModel
+@using NEPATechDotnetCoreMVC.Constants
 @*<h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>*@
 
@@ -33,7 +34,10 @@
                                 <textarea runat="server" rows="4" id="txtMessage" name="complaint" placeholder="What's Wrong" cols="50" required></textarea>
                                 <br />
                                 <input runat="server" type="submit" name="submitComplaint" value="Send" class="special fit" />
-                                <button type="button" class="button special fit small">View Complaints</button>
+                                @if (User.IsInRole(RoleConstants.Admin) || User.IsInRole(RoleConstants.Webmaster))
+                                {
+                                    <button type="button" class="button special fit">View Feedback</button>
+                                }
                             </fieldset>
                         </form>
                         

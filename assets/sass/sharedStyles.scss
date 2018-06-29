@@ -11,18 +11,29 @@
 .text-icon-red {
     color: #f56a6a !important;}
 
-.login {
-    padding-top:10px;
-    margin-top: 10px;
-    text-align:center;
-    border-top: solid 2px #f56a6a;
-    a {
+.icons{
+    .login {
+        a {
+            background-color: #F44B4B;
+            text-decoration: none;
+            padding:5px 15px;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin:0;
+
+        }
+
+        a:hover {
+            color: white !important;
+            background-color:#f56a6a;
+        }
     }
 }
 
 .loginMenu {
-    width: 475px;
-    margin: 0 auto;
+    width: 100%;
     margin-top: 50px;
 
     .loginMenuContent {
@@ -53,13 +64,12 @@
     text-align: center;
     line-height: 50px;
 }
-
-
 /*Register menu*/
 
 .registerMenu {
-    width: 475px;
-    margin: 0 auto;
+    float:none;
+    margin:0 auto;
+    width: 100%;
     margin-top: 50px;
 
     .registerMenuContent {
@@ -67,11 +77,13 @@
         padding-bottom: 0;
         padding-top: 5px;
         background-color: #fafafa;
+
         form {
             margin: 0;
             padding: 0;
         }
     }
+
 
     .registerFooter {
         width: 100%;
@@ -82,9 +94,9 @@
         margin: 0;
         text-align: center;
         line-height: 50px;
-        input{
-            border-radius:0;
 
+        input {
+            border-radius: 0;
         }
     }
 }
