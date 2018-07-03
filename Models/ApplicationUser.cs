@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NEPATechDotnetCoreMVC.Models
 {
@@ -12,7 +8,12 @@ namespace NEPATechDotnetCoreMVC.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        [ForeignKey("MemberProfile")]
-        public int MemberProfileId { get; set; }
+
+        public string Biography { get; set; }
+        public DateTime LastActive { get; set; }
+        public string ImageUrl { get; set; }
+
+        public ICollection<Project.Project> Projects { get; set; }
+        public ICollection<Skill.Skill> Skills { get; set; }
     }
 }

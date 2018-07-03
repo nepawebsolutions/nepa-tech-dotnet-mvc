@@ -26,7 +26,7 @@ namespace NEPATechDotnetCoreMVC.Controllers
             var a = User;
             membersOnWebsite = new HomeViewModel
             {
-                MembersOnWebsite = _context.MockUsers.Count()
+                MembersOnWebsite = _context.Users.Count()
             };
             ViewData["Title"] = "Welcome ";
             return View(membersOnWebsite);

@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
 using NEPATechDotnetCoreMVC.Data;
 using System;
 
@@ -135,6 +133,8 @@ namespace NEPATechDotnetCoreMVC.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<string>("Biography");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -145,13 +145,15 @@ namespace NEPATechDotnetCoreMVC.Migrations
 
                     b.Property<string>("FirstName");
 
+                    b.Property<string>("ImageUrl");
+
+                    b.Property<DateTime>("LastActive");
+
                     b.Property<string>("LastName");
 
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<int>("MemberProfileId");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
@@ -209,48 +211,12 @@ namespace NEPATechDotnetCoreMVC.Migrations
                     b.ToTable("ContactLogs");
                 });
 
-            modelBuilder.Entity("NEPATechDotnetCoreMVC.Models.MemberProfile.MemberProfile", b =>
-                {
-                    b.Property<int>("MemberProfileId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Biography");
-
-                    b.Property<string>("ImageUrl");
-
-                    b.Property<DateTime>("LastActive");
-
-                    b.Property<int>("UserId");
-
-                    b.HasKey("MemberProfileId");
-
-                    b.ToTable("MemberProfiles");
-                });
-
-            modelBuilder.Entity("NEPATechDotnetCoreMVC.Models.MockUsers.User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("FName")
-                        .IsRequired()
-                        .HasMaxLength(32);
-
-                    b.Property<string>("LName")
-                        .IsRequired()
-                        .HasMaxLength(32);
-
-                    b.Property<int>("MemberProfileId");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("MockUsers");
-                });
-
             modelBuilder.Entity("NEPATechDotnetCoreMVC.Models.Project.Project", b =>
                 {
                     b.Property<int>("ProjectId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ApplicationUserId");
 
                     b.Property<string>("ProjectDesc")
                         .IsRequired();
@@ -262,9 +228,9 @@ namespace NEPATechDotnetCoreMVC.Migrations
                         .IsRequired()
                         .HasMaxLength(32);
 
-                    b.Property<int>("UserId");
-
                     b.HasKey("ProjectId");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Projects");
                 });
@@ -274,6 +240,8 @@ namespace NEPATechDotnetCoreMVC.Migrations
                     b.Property<int>("SkillId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("ApplicationUserId");
+
                     b.Property<string>("SkillName")
                         .IsRequired()
                         .HasMaxLength(16);
@@ -281,6 +249,8 @@ namespace NEPATechDotnetCoreMVC.Migrations
                     b.Property<int>("UserId");
 
                     b.HasKey("SkillId");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Skills");
                 });
@@ -328,6 +298,20 @@ namespace NEPATechDotnetCoreMVC.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("NEPATechDotnetCoreMVC.Models.Project.Project", b =>
+                {
+                    b.HasOne("NEPATechDotnetCoreMVC.Models.ApplicationUser")
+                        .WithMany("Projects")
+                        .HasForeignKey("ApplicationUserId");
+                });
+
+            modelBuilder.Entity("NEPATechDotnetCoreMVC.Models.Skill.Skill", b =>
+                {
+                    b.HasOne("NEPATechDotnetCoreMVC.Models.ApplicationUser")
+                        .WithMany("Skills")
+                        .HasForeignKey("ApplicationUserId");
                 });
 #pragma warning restore 612, 618
         }

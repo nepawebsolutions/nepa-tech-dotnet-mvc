@@ -27,8 +27,8 @@
 
                         @*The following snippit wiil be the base layout for each member profile.*@
 
-                        @{  var last = Model.Members.LastOrDefault(); }
-                        @foreach (var members in Model.Members)
+                        @{  var last = Model.Members.Profile.LastOrDefault(); }
+                        @foreach (var member in Model.Members.Profile)
                         {
                             <div class="memberProfileBlock">
                                 <div class="row">
@@ -36,30 +36,30 @@
                                     <div class="col-sm-4 col-md-8 col-lg-10">
                                         <div class="row">
                                             <div class="col">
-                                                <h6 class="">@Html.ActionLink(members.Member.FName + " " + members.Member.LName, "Details", new { id = members.Member.UserId })</h6>
+                                                <h6 class="">@Html.ActionLink(member.FirstName + " " + member.LastName, "Details", new { id = member.Id })</h6>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <p><b>Last Active: </b>@members.Profile.LastActive.ToShortDateString()</p>
+                                                <p><b>Last Active: </b>@member.LastActive</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
                                                 <p>
                                                     @{
-                                                        if(members.Profile.Biography.Length > 250)
+                                                        if(member.Biography.Length > 250)
                                                         {
-                                                            @members.Profile.Biography.Substring(0, 250)<text>...</text>
+                                                            @member.Biography.Substring(0, 250)<text>...</text>
                                                         }
                                                         else
                                                         {
-                                                            @members.Profile.Biography
+                                                            @member.Biography
 
                                                         }
                                                     }
                                                     <br />
-                                                    @Html.ActionLink("View Profile", "Details", new { id = members.Member.UserId })
+                                                    @Html.ActionLink("View Profile", "Details", new { id = member.Id})
                                                 </p>
                                             </div>
                                         </div>
@@ -68,7 +68,7 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    @if (!members.Equals(last))
+                                    @if (!member.Equals(last))
                                     {   
                                         <div class="memberBorderBottom"></div>
                                     }

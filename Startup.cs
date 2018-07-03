@@ -35,23 +35,6 @@ namespace NEPATechDotnetCoreMVC
 
             services.AddAuthorization();
             services.AddAuthentication();
-            services.AddAuthenticationCore();
-
-
-            //services.AddSession();
-
-            services.ConfigureApplicationCookie(options =>
-            {
-                // Cookie settings
-                //options.Cookie.HttpOnly = true;
-                //options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-                //options.LoginPath = "/Account/Login"; // If the LoginPath is not set here, ASP.NET Core will default to /Account/Login
-                //options.LogoutPath = "/Account/Logout"; // If the LogoutPath is not set here, ASP.NET Core will default to /Account/Logout
-                //options.AccessDeniedPath = "/Account/AccessDenied"; // If the AccessDeniedPath is not set here, ASP.NET Core will default to /Account/AccessDenied
-                //options.SlidingExpiration = true;
-                //options.
-            });
-
 
 
 
@@ -64,11 +47,6 @@ namespace NEPATechDotnetCoreMVC
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequiredUniqueChars = 3;
-
-                //// Lockout settings
-                //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
-                //options.Lockout.MaxFailedAccessAttempts = 10;
-                //options.Lockout.AllowedForNewUsers = true;
 
                 // User settings
                 options.User.RequireUniqueEmail = true;
@@ -93,8 +71,7 @@ namespace NEPATechDotnetCoreMVC
             }
 
             app.UseStaticFiles();
-
-            //app.UseSession();
+            
             app.UseAuthentication();
 
             app.UseMvc(routes =>
@@ -104,7 +81,7 @@ namespace NEPATechDotnetCoreMVC
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            CreateUserRoles(services).Wait() ;
+            CreateUserRoles(services).Wait();
         }
         private async Task CreateUserRoles(IServiceProvider serviceProvider)
         {

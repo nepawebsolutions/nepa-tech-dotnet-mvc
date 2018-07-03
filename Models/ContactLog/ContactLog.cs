@@ -9,7 +9,9 @@ namespace NEPATechDotnetCoreMVC.Models.ContactLog
     public class ContactLog
     {
         [Required]
+        [Key]
         public int ContactLogId { get; set; }
+
         [Required]
         [MaxLength(32)]
         public string FName { get; set; }

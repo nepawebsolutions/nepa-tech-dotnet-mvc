@@ -10,8 +10,6 @@ namespace NEPATechDotnetCoreMVC.ViewModel.AccountViewModels
     {
         [Required(ErrorMessage = "hello"), EmailAddress, MaxLength(256), Display(Name = "Email Address")]
         public string Email { get; set; }
-        [Required, EmailAddress, MaxLength(256), Display(Name = "Confirm Email Address"),Compare(nameof(Email),ErrorMessage = "Emails don't match!")]
-        public string ConfirmEmail { get; set; }
         [Required, Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Required, Display(Name = "Last Name")]
@@ -21,8 +19,6 @@ namespace NEPATechDotnetCoreMVC.ViewModel.AccountViewModels
         [Required, MinLength(8), DataType(DataType.Password), Display(Name = "Confirm Password")]
         [Compare(nameof(Password), ErrorMessage = "Passwords do not match")]
         public string ConfirmPassword { get; set; }
-       
-        public List<string> Skills { get; set; }
         public bool IsRegisterSuccessful { get; set; }
     }
 }
