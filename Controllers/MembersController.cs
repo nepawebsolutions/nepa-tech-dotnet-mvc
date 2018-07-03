@@ -43,29 +43,24 @@ namespace NEPATechDotnetCoreMVC.Controllers
             return View(viewModel);
         }
 
-        //public async Task<IActionResult> Details(int id)
-        //{
+        public async Task<IActionResult> Details(int id)
+        {
 
-        //    //Creating a random collection of names
-        //    var selectedUser = await _userManager.FindByIdAsync(id.ToString());
-        //    var userProfile = _context.MemberProfiles.Where(mu => mu.UserId.ToString().Equals(selectedUser.Id));
-        //    var userSkills = _context.Skills.Where(mu => mu.UserId.ToString().Equals(selectedUser.Id));
-        //    var userProjects = _context.Projects.Where(mu => mu.UserId.ToString().Equals(selectedUser.Id));
+            //Creating a random collection of names
+            var members = new List<ApplicationUser>() { _context.Users.ToList().ElementAt(id) };
 
-        //    //var MembersProfiles = dummyMembers.Join(dummyProfiles, keyId => keyId.MemberProfileId, mKeyId => mKeyId.MemberProfileId,
-        //    //    (member, profile) => new MemberProfileViewModel
-        //    //    {
-        //    //        Member = member,
-        //    //        Profile = profile
-        //    //    });
 
-        //    var viewModel = new MembersViewModel
-        //    {
+            var profileModel = new MemberProfilesViewModel
+            {
+                Profile = members
+            };
 
-        //        Member = selectedUser,
-        //        Skills = userSkills
-        //    };
-        //    return View(viewModel);
-        //}
+            var viewModel = new MembersViewModel
+            {
+
+                Members = profileModel
+            };
+            return View(viewModel);
+        }
     }
 }

@@ -47,7 +47,11 @@ namespace NEPATechDotnetCoreMVC.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    var u = User.Identity;
+                    var user = await _userManager.FindByEmailAsync(model.Email);
+
+                    user.LastActive = DateTime.Now;
+
+                    await _userManager.UpdateAsync(user);
                     return   RedirectToAction("Index", "Home");
                 }
                 if (result.IsLockedOut)
@@ -78,7 +82,7 @@ namespace NEPATechDotnetCoreMVC.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Biography="", FirstName=model.FirstName, LastName = model.LastName};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Biography="", FirstName=model.FirstName, LastName = model.LastName, LastActive = DateTime.Now};
                 var claims = await _userManager.GetClaimsAsync(user);
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

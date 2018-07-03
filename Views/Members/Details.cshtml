@@ -5,18 +5,22 @@
 }
 @model NEPATechDotnetCoreMVC.ViewModel.MembersViewModel
 
+@{ 
+    var member = Model.Members.Profile.FirstOrDefault();
+}
+
 <div id="memberDetailsWrapper">
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2 id="detailsFullName">@Model.Members.ElementAt(0).Member.FName @Model.Members.ElementAt(0).Member.LName</h2>
+                <h2 id="detailsFullName">@member.FirstName @member.LastName</h2>
             </div>
         </div>
         <div class="row">
             <div class="detailsShiftRight col">
                 <img id="detailsProfilePic" class="pull-left" src="~/images/pic06.jpg" width="256" height="256" />
                 <h4>Biography</h4>
-                <p>@Model.Members.ElementAt(0).Profile.Biography</p> @*Grab the first profile being passed to the view (back-end ensures only one result)*@
+                <p>@member.Biography</p> @*Grab the first profile being passed to the view (back-end ensures only one result)*@
             </div>
         </div>
         <div class="row">
@@ -27,26 +31,31 @@
         <div id="skillsWrapper">
             <div class="row detailsShiftRight">
                 <div class="col">
-                
+                       
                         @{
-                            var cols = 4.0;
-                            var lastSkill = 0;
-                            var rows = Model.Skills.Count() > 4 ? Math.Ceiling(Model.Skills.Count() / cols) : 4; //Setting up a 4 column table using bootstrap grids
-                            for (var r = 1; r < rows; r++)
+
+                            if (member.Skills != null && member.Skills.Count() > 0 )
                             {
-                                <div class="row">
-                                @{ for (var c = lastSkill; c < cols+lastSkill; c++)
-                                    {
-                                        if (c < Model.Skills.Count())
+
+                                var cols = 4.0;
+                                var lastSkill = 0;
+                                var rows = member.Skills.Count() > 4 ? Math.Ceiling(member.Skills.Count() / cols) : 4; //Setting up a 4 column table using bootstrap grids
+                                for (var r = 1; r < rows; r++)
+                                {
+                                    <div class="row">
+                                    @{ for (var c = lastSkill; c < cols + lastSkill; c++)
                                         {
-                                        <div class="col-3">
-                                            <span>@Model.Skills.ElementAt(lastSkill).SkillName</span>
-                                        </div>
-                                        lastSkill++;
+                                            if (c < member.Skills.Count())
+                                            {
+                                            <div class="col-3">
+                                                <span>@member.Skills.ElementAt(lastSkill).SkillName</span>
+                                            </div>
+                                                lastSkill++;
+                                            }
                                         }
-                                    }
-                                 }
-                                </div>
+                                     }
+                                    </div>
+                                }
                             }
                         }
                     </div>
